@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MISTERFU — Artist, Author, Builder from Hialeah</title>
+<meta name="description" content="MisterFu — Abel Garcia Medina. Artist, author, builder from Hialeah. Stories, books, prints, and apps. Everything I make lives here.">
+<style>
+  :root{
+    --bg:#0b0b10;
+    --panel:#14141d;
+    --panel2:#1b1b28;
+    --ink:#f5f2ea;
+    --dim:#a8a49a;
+    --gold:#f2b01e;
+    --red:#e63329;
+    --teal:#17b8a6;
+    --blue:#2f7fe0;
+    --line:#2a2a3a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+
+  /* chunky geometric top bar */
+  .geo-strip{display:flex;height:14px}
+  .geo-strip div:nth-child(1){flex:3;background:var(--gold)}
+  .geo-strip div:nth-child(2){flex:1;background:var(--red)}
+  .geo-strip div:nth-child(3){flex:2;background:var(--teal)}
+  .geo-strip div:nth-child(4){flex:1;background:var(--blue)}
+  .geo-strip div:nth-child(5){flex:2;background:var(--ink)}
+
+  nav{
+    display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:space-between;
+    padding:18px 0 6px;
+  }
+  .brand{font-weight:900;letter-spacing:.14em;font-size:1.05rem;text-decoration:none}
+  .brand span{color:var(--gold)}
+  .navlinks{display:flex;flex-wrap:wrap;gap:6px 18px}
+  .navlinks a{
+    text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);
+  }
+  .navlinks a:hover{color:var(--gold)}
+
+  /* HERO */
+  .hero{padding:52px 0 44px;position:relative;overflow:hidden}
+  .hero .shapes{position:absolute;inset:0;pointer-events:none;opacity:.9}
+  .hero h1{
+    font-size:clamp(3.2rem,13vw,7.5rem);
+    font-weight:900;line-height:.95;letter-spacing:.01em;text-transform:uppercase;
+    position:relative;
+  }
+  .hero h1 .gold{color:var(--gold)}
+  .hero .tag{
+    margin-top:18px;font-size:clamp(1.05rem,3.4vw,1.45rem);font-weight:700;position:relative;
+  }
+  .hero .sub{
+    margin-top:10px;color:var(--dim);font-size:clamp(.95rem,2.8vw,1.1rem);max-width:34em;position:relative;
+  }
+  .hero .cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;position:relative}
+
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:800;letter-spacing:.06em;
+    padding:14px 24px;border:3px solid var(--ink);text-transform:uppercase;font-size:.9rem;
+    background:transparent;color:var(--ink);
+  }
+  .btn.solid{background:var(--gold);border-color:var(--gold);color:#141005}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--red)}
+  .btn.solid:hover{box-shadow:5px 5px 0 var(--teal)}
+
+  section{padding:44px 0 8px}
+  .kicker{
+    display:inline-block;font-size:.78rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;
+    padding:6px 12px;margin-bottom:14px;color:#141005;
+  }
+  .k-gold{background:var(--gold)} .k-red{background:var(--red);color:#fff}
+  .k-teal{background:var(--teal)} .k-blue{background:var(--blue);color:#fff}
+  h2{font-size:clamp(1.7rem,6vw,2.5rem);font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:10px}
+  .lede{color:var(--dim);max-width:40em;margin-bottom:24px}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
+  .card{
+    background:var(--panel);border:2px solid var(--line);padding:24px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .card h3{font-size:1.3rem;font-weight:900;text-transform:uppercase;letter-spacing:.02em}
+  .card p{color:var(--dim);font-size:.98rem}
+  .card .go{margin-top:auto;padding-top:10px}
+  .card .go a{font-weight:800;text-decoration:none;color:var(--gold);letter-spacing:.05em}
+  .card .go a:hover{text-decoration:underline}
+  .badge{
+    align-self:flex-start;font-size:.72rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;
+    border:2px solid var(--gold);color:var(--gold);padding:3px 9px;
+  }
+  .badge.live{border-color:var(--teal);color:var(--teal)}
+  .badge.soon{border-color:var(--dim);color:var(--dim)}
+  .badge.adult{border-color:var(--red);color:var(--red)}
+
+  /* ART */
+  .artgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(min-width:680px){.artgrid{grid-template-columns:repeat(4,1fr)}}
+  .artgrid figure{background:var(--panel);border:2px solid var(--line);padding:10px}
+  .artgrid img{width:100%;height:auto;display:block;background:#000}
+  .prices{
+    margin-top:20px;background:var(--panel2);border:2px solid var(--line);padding:20px 24px;
+    display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center;
+  }
+  .prices .p{font-size:1.05rem}
+  .prices .p b{font-size:1.35rem;color:var(--gold)}
+  .prices .how{color:var(--dim);font-size:.95rem;width:100%}
+  .prices .how a{color:var(--gold);font-weight:700;text-decoration:none}
+  .prices .how a:hover{text-decoration:underline}
+
+  /* LIST */
+  .listbox{
+    background:var(--panel);border:3px solid var(--gold);padding:28px 24px;margin-bottom:12px;
+  }
+  .listbox form{display:flex;flex-direction:column;gap:12px;margin-top:16px}
+  @media(min-width:680px){.listbox form{flex-direction:row}}
+  .listbox input[type=email]{
+    flex:1;padding:14px 16px;font-size:1rem;background:var(--bg);color:var(--ink);
+    border:2px solid var(--line);border-radius:0;
+  }
+  .listbox input[type=email]:focus{outline:2px solid var(--teal);outline-offset:1px}
+  .listbox button{
+    padding:14px 26px;font-size:.92rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--gold);color:#141005;border:3px solid var(--gold);cursor:pointer;
+  }
+  .listbox button:hover{box-shadow:5px 5px 0 var(--red)}
+  .listnote{color:var(--dim);font-size:.88rem;margin-top:12px}
+  #list-ok{display:none;margin-top:14px;font-weight:700;color:var(--teal)}
+
+  footer{
+    margin-top:56px;border-top:2px solid var(--line);padding:30px 0 44px;color:var(--dim);
+    font-size:.95rem;
+  }
+  footer .house{color:var(--ink);font-weight:800;font-size:1.05rem;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div class="geo-strip" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div></div>
+
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#top">MISTER<span>FU</span></a>
+    <div class="navlinks">
+      <a href="#watch">Watch</a>
+      <a href="#read">Read</a>
+      <a href="#art">Art</a>
+      <a href="#apps">Apps</a>
+      <a href="#list">The List</a>
+    </div>
+  </nav>
+
+  <!-- 1. HERO -->
+  <header class="hero" id="top">
+    <svg class="shapes" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true">
+      <polygon points="86,6 100,6 100,26" fill="#e63329" opacity="0.55"/>
+      <polygon points="0,78 14,100 0,100" fill="#17b8a6" opacity="0.45"/>
+      <rect x="90" y="66" width="10" height="10" fill="#f2b01e" opacity="0.4"/>
+    </svg>
+    <h1>Mister<span class="gold">Fu</span></h1>
+    <p class="tag">Artist. Author. Builder. From Hialeah.</p>
+    <p class="sub">Everything I make lives here — the stories, the books, the prints, the apps. One home base, mine.</p>
+    <div class="cta">
+      <a class="btn solid" href="#watch">Watch the stories</a>
+      <a class="btn" href="#list">Get the new drops first</a>
+    </div>
+  </header>
+
+  <!-- 2. WATCH -->
+  <section id="watch">
+    <span class="kicker k-red">Watch</span>
+    <h2>Stories on screen</h2>
+    <p class="lede">Two channels, two worlds — one for the kids, one for the curious.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="badge live">Live now</span>
+        <h3>MisterFu Stories</h3>
+        <p>Animated stories for kids — Riff Rocket, Bleepy &amp; Blipon, and Mister Stache — new episodes and Shorts every week on YouTube.</p>
+        <div class="go"><a href="https://www.youtube.com/@MisterFuStories" target="_blank" rel="noopener">Watch on YouTube →</a></div>
+      </div>
+      <div class="card">
+        <span class="badge">Launching now</span>
+        <h3>MisterFu Decoded</h3>
+        <p>Short explainers that decode science, tech, and true stories — what happened, what we know, and what we don't. First videos dropping now.</p>
+        <div class="go"><a href="#list">Get the launch drop first →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. READ -->
+  <section id="read">
+    <span class="kicker k-teal">Read</span>
+    <h2>Books by MisterFu</h2>
+    <p class="lede">Novels written in Hialeah — one arriving on Amazon now, three more on the way.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="badge">Coming to Amazon now</span>
+        <h3>Sunshine in the Machine</h3>
+        <p>A love story inside the machine — the first MisterFu novel, in Kindle and paperback.</p>
+      </div>
+      <div class="card">
+        <span class="badge soon">Forthcoming</span>
+        <h3>Under Hialeah</h3>
+        <p>A Hialeah heist novel — a crew, a bank, and a way in nobody sees coming.</p>
+      </div>
+      <div class="card">
+        <span class="badge soon">Forthcoming</span>
+        <h3>Still Me</h3>
+        <p>The machine-man novel — what stays human when the body doesn't.</p>
+      </div>
+      <div class="card">
+        <span class="badge soon">Forthcoming</span>
+        <h3>The Second Time</h3>
+        <p>A book of recurring dreams — the flood, the flight, and the second time around.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ART -->
+  <section id="art">
+    <span class="kicker k-gold">Art</span>
+    <h2>RIOT.FEVER.ZAPS.</h2>
+    <p class="lede">Bold geometric canvas prints, ready to hang. Made in Hialeah, numbered and signed by the artist.</p>
+    <div class="artgrid">
+      <figure><img src="assets/art-1.jpg" alt="Geometric canvas print, green and gold" width="800" height="1000" loading="lazy"></figure>
+      <figure><img src="assets/art-2.jpg" alt="Geometric canvas print, deep reds" width="800" height="1022" loading="lazy"></figure>
+      <figure><img src="assets/art-3.jpg" alt="Geometric canvas print, gold leaf tones" width="800" height="1067" loading="lazy"></figure>
+      <figure><img src="assets/art-4.jpg" alt="Geometric canvas print, black and gold" width="800" height="667" loading="lazy"></figure>
+    </div>
+    <div class="prices">
+      <div class="p">Small <b>$55</b></div>
+      <div class="p">Medium <b>$80</b></div>
+      <div class="p">Large <b>$115</b></div>
+      <p class="how">
+        To order: DM <a href="https://www.instagram.com/agm1_art" target="_blank" rel="noopener">@agm1_art on Instagram</a>.
+        Pay by Cash App <b>$abelagm1</b> or PayPal <b>@abelGarcia118</b>.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. APPS -->
+  <section id="apps">
+    <span class="kicker k-blue">Apps</span>
+    <h2>Built by MisterFu</h2>
+    <p class="lede">Real apps, live right now — open them in your browser, no install needed.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="badge live">Live</span>
+        <h3>Glimpse — Show, Don't Send</h3>
+        <p>Show a photo without ever sending it. End-to-end encrypted, hold-to-show, and a screenshot attempt ends the show.</p>
+        <div class="go"><a href="https://show-don-t-send-production.up.railway.app" target="_blank" rel="noopener">Open Glimpse →</a></div>
+      </div>
+      <div class="card">
+        <span class="badge live">Live</span>
+        <h3>Plato</h3>
+        <p>Snap a photo of your meal — get the calories, macros, and a healthier version of the dish. English and Spanish.</p>
+        <div class="go"><a href="https://plato-production-2809.up.railway.app" target="_blank" rel="noopener">Open Plato →</a></div>
+      </div>
+      <div class="card">
+        <span class="badge live">Live</span>
+        <h3>FORGE</h3>
+        <p>A personal workout coach — your plan, your diet, your progress, your badges. Built for real bodies and real schedules.</p>
+        <div class="go"><a href="https://forge-app-production-37dc.up.railway.app/" target="_blank" rel="noopener">Open FORGE →</a></div>
+      </div>
+      <div class="card">
+        <span class="badge adult">18+ · Adults only</span>
+        <h3>GIRTHY</h3>
+        <p>A private, adults-only measurement and confidence app. Nothing is stored.</p>
+        <div class="go"><a href="https://measure-app-production-01fe.up.railway.app/" target="_blank" rel="noopener">Open GIRTHY →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. THE LIST -->
+  <section id="list">
+    <span class="kicker k-gold">The List</span>
+    <h2>Get the new drops first</h2>
+    <div class="listbox">
+      <p>New videos, new books, new prints — the List hears about all of it before anybody else. No spam, ever. Just the drops.</p>
+      <!--
+        SIGNUP HOOKUP (pick one — see README.md):
+        Option A: replace the action below with the Formspree-style endpoint URL Abel chooses.
+        Option B: point it at a small Railway micro-service that appends signups to a JSON file.
+        Until one is wired, the form falls back to opening an email draft (mailto) so no signup is lost.
+      -->
+      <form id="list-form" action="https://formspree.io/f/REPLACE_WITH_ABELS_FORM_ID" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit">Join the List</button>
+      </form>
+      <p id="list-ok">You're in line — the List goes live with the first drop. Thank you.</p>
+      <p class="listnote">The List is being connected right now. If the button opens your email app instead, just hit send — that works too.</p>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
+  <footer>
+    <p class="house">YouTube is the billboard. This is the house.</p>
+    <p>Built in Hialeah. © Abel Garcia Medina.</p>
+  </footer>
+</div>
+
+<script>
+  // The List: until the real endpoint is wired (see README), fall back to a
+  // mailto draft so a signup is never silently lost.
+  (function () {
+    var form = document.getElementById('list-form');
+    var ok = document.getElementById('list-ok');
+    form.addEventListener('submit', function (e) {
+      var action = form.getAttribute('action');
+      if (action.indexOf('REPLACE_WITH_ABELS_FORM_ID') !== -1) {
+        e.preventDefault();
+        var email = form.querySelector('input[name=email]').value;
+        window.location.href = 'mailto:agm1consultingllc@gmail.com'
+          + '?subject=' + encodeURIComponent('Join The List')
+          + '&body=' + encodeURIComponent('Please add me to The List: ' + email);
+        ok.style.display = 'block';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
